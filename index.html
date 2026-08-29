@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scholarship Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="mark">SA</div>
+          <div>
+            <strong>Scholarship Agent</strong>
+            <span>Private family workspace</span>
+          </div>
+        </div>
+        <nav class="nav">
+          <button class="nav-item active" data-view="overview">Overview</button>
+          <button class="nav-item" data-view="profiles">Profiles</button>
+          <button class="nav-item" data-view="student-files">Students Files</button>
+          <button class="nav-item" data-view="scholarships">Scholarships</button>
+          <button class="nav-item" data-view="essays">Essays</button>
+          <button class="nav-item" data-view="approvals">Approvals</button>
+          <button class="nav-item" data-view="audit">Audit</button>
+          <button class="nav-item" data-view="settings">Settings</button>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Local-first agent workflow</p>
+            <h1>Application Review Queue</h1>
+            <p id="portalMeta" class="compact">Connecting to portal...</p>
+          </div>
+          <div class="actions">
+            <button id="runPipeline" class="primary">Run No-Essay Search</button>
+            <button id="refresh" class="ghost">Refresh</button>
+            <button id="logout" class="ghost">Logout</button>
+          </div>
+        </header>
+
+        <section id="status" class="status" hidden></section>
+        <section id="content"></section>
+      </main>
+    </div>
+    <section id="profileEditor" class="modal-layer" hidden></section>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

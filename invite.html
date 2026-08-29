@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Accept invite · Scholarship Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="login-page">
+    <main class="login-shell">
+      <section class="login-panel">
+        <div class="brand login-brand">
+          <div class="mark">SA</div>
+          <div>
+            <strong>Scholarship Agent</strong>
+            <span>Private family portal</span>
+          </div>
+        </div>
+        <h1>Accept Invite</h1>
+        <p class="compact">Create your password to sign in to the family scholarship portal.</p>
+        <form id="inviteForm" class="login-form">
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" readonly required />
+          </label>
+          <label>
+            Create password
+            <input name="password" type="password" autocomplete="new-password" minlength="10" required />
+          </label>
+          <button class="primary" type="submit">Accept invite</button>
+        </form>
+        <p class="compact"><a href="/login">Back to Sign In</a></p>
+        <p id="inviteStatus" class="status" hidden></p>
+      </section>
+    </main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const inviteToken = params.get("invite") || "";
+      const form = document.querySelector("#inviteForm");
+      const status = document.querySelector("#inviteStatus");
+      form.querySelector('input[name="email"]').value = params.get("email") || "";
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        status.hidden = false;
+        if (!inviteToken) {
+          status.textContent = "Invite link is missing.";
+          return;
+        }
+        status.textContent = "Accepting invite...";
+        const data = Object.fromEntries(new FormData(form).entries());
+        const response = await fetch("/api/auth/accept-invite", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: inviteToken, password: data.password })
+        });
+        if (response.ok) {
+          window.location.href = "/portal.html";
+          return;
+        }
+        const payload = await response.json().catch(() => ({}));
+        status.textContent = payload.error || "Could not accept invite.";
+      });
+    </script>
+  </body>
+</html>
