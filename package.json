@@ -1,0 +1,32 @@
+{
+  "name": "scholarship-agent-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local-first scholarship application assistant with agent workflows and human approval gates.",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.ts",
+    "build:iis": "node scripts/build-iis-package.mjs",
+    "dev:next": "next dev",
+    "build:next": "next build",
+    "start:next": "next start",
+    "automation:weekly": "node --disable-warning=ExperimentalWarning src/automation.ts weekly",
+    "automation:review": "node --disable-warning=ExperimentalWarning src/automation.ts review",
+    "test": "node --test --disable-warning=ExperimentalWarning tests/*.test.ts"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^7.2.1",
+    "@neondatabase/serverless": "^1.0.2",
+    "@vercel/blob": "^2.3.3",
+    "next": "^16.2.6",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

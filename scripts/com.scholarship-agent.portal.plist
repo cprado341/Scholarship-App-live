@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.scholarship-agent.portal</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/carlosp/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node</string>
+    <string>--disable-warning=ExperimentalWarning</string>
+    <string>src/server.ts</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/carlosp/Library/CloudStorage/OneDrive-Amsive/Documents/Codex/2026-05-14/i-want-to-build-an-app</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOST</key>
+    <string>127.0.0.1</string>
+    <key>PORT</key>
+    <string>4317</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/tmp/scholarship-agent-portal.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/scholarship-agent-portal.err.log</string>
+</dict>
+</plist>
